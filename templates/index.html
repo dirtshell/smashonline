@@ -1,0 +1,17 @@
+$def with (matches)
+
+<h1> Welcome to the homepage of SmashOnline (Tentative Title)</h1>
+
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Netcode</th>
+        <th>Location</th>
+    </tr>
+    $for match in matches
+        <tr>
+            <td>$match.title</td>
+            <td>$match.net_code</td>
+            <td>$match.ip</td>
+        </tr>
+</table>
