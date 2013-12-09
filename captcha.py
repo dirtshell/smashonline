@@ -17,7 +17,6 @@ def getCaptcha():
     for i in range(5):
         word = word + alphabet[random.randint(0, len(alphabet) -1)]
         
-    print word
     draw.text((5, 5), word, font=font, fill=(0, 0, 0))
 
     f = cStringIO.StringIO()

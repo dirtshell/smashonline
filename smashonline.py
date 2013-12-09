@@ -19,13 +19,11 @@ if web.config.get('_session') is None:
 else:
     session = web.config._session
     
-vcaptcha = form.Validator("Please enter the code",  lambda x:x == session.captcha)  # The captcha validator    
-    
 matchForm = form.Form(
     form.Textbox('title', form.notnull, description="Match Title"),
     form.Textbox('net_code', form.notnull, description="Net Code"),
+    form.Textbox('captcha', form.notnull, description="Validation Code", pre="<img src='/captcha.gif' valign=center><br>", style="width:70px;"),
     form.Button('Create Game'),
-    form.Textbox('captcha', vcaptcha, description="Validation Code", pre="<img src='/captcha.gif' valign=center><br>", class_="standard", style="width:70px;"),
     validators = [
         form.Validator("Invalid net code", lambda i: len(i.net_code) == 8 ),   # Check to make sure the netcode is legit
         form.Validator("Title too long", lambda i: len(i.title) <= 25), # Check to make sure the title is within 25 characters
@@ -46,7 +44,7 @@ class create_match:
     
     # Save the data    
     def POST(self): 
-        form = matchForm() 
+        form = matchForm()
         if not form.validates():    # If there is an issue
             return render.create(form)    # Return them to the create page
         else:   # Otherwise save it
