@@ -13,7 +13,7 @@ def getMatch(id):
     except IndexError:
         return None
         
-def newMatch(title, net_code):
+def newMatch(title, net_code, password=None):
     unique_key = str(uuid.uuid4()).upper().replace('-','')  # Generate a unique key
     unique_key = unique_key[0:10]   # Truncate to a 10 char long random string
     ip = web.ctx['ip']   # Get the IP of the request
@@ -22,4 +22,5 @@ def newMatch(title, net_code):
         net_code=net_code, 
         created_on=datetime.datetime.utcnow(), 
         unique_key=unique_key, 
-        ip=ip,)
+        ip=ip,
+        password=password,)
