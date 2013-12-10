@@ -5,5 +5,6 @@ CREATE TABLE matches (
 	ip TEXT,
 	unique_key TEXT,
 	created_on DATETIME,
+	password TEXT,
 	primary key (id)
 );
