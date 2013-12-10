@@ -12,10 +12,13 @@ $def with (matches)
         <th>Netcode</th>
         <th>Location</th>
     </tr>
-    $for match in matches
+    $for match in matches:
         <tr>
             <td>$match.title</td>
-            <td>$match.net_code</td>
+            $if match.password:
+                <td>Password Protected</td>
+            $else:
+                <td>$match.net_code</td>
             <td>$match.ip</td>
         </tr>
 </table>
