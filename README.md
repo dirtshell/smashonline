@@ -5,7 +5,6 @@ If you cloned this, you are going to need a sqlite database, as well as PIL. To 
 
 ### Things to come
 * Allow password protected matches
-* Implement CAPTCHAs of some sort
 * Creating a match is done in a modal, rather than a seperate page
 * Prettify everything
 * Autofill the first page of matches with matches in the users region
