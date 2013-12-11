@@ -29,7 +29,8 @@ matchForm = form.Form(
         form.Validator("Invalid net code", lambda i: len(i.net_code) == 8 ),   # Check to make sure the netcode is legit
         form.Validator("Title too long", lambda i: len(i.title) <= 25), # Check to make sure the title is within 25 characters
         form.Validator("Invalid password", lambda i: len(i.password) <=25),  # Check to make sure the password isn't too long
-        form.Validator("Title is required", lambda i: len(i.title) != 0)]   # Check to make sure a title was entered
+        form.Validator("Title is required", lambda i: len(i.title) != 0),   # Check to make sure a title was entered
+        form.Validator("Incorrect CAPTCHA", lambda i: i.captcha == session.captcha),]    # Check the CAPTCHA they entered against the one in the session variable
     )
 
 class index:
@@ -50,8 +51,7 @@ class create_match:
         if not form.validates():    # If there is an issue
             return render.create(form)    # Return them to the create page
         else:   # Otherwise save it
-            # form.d.boe and form['boe'].value are equivalent ways of
-            # extracting the validated arguments from the form.
+            # form.d.boe and form['boe'].value are both ways to extract data
             model.newMatch(title=form.d.title, net_code=form.d.net_code, password=form.d.password)
             raise web.seeother('/')   # Send em to the home page
             
@@ -64,5 +64,4 @@ class captcha:
         return captcha[1].read()
 
 if __name__ == "__main__":
-    app = web.application(urls, globals())
     app.run()
