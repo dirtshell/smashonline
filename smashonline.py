@@ -24,6 +24,7 @@ matchForm = form.Form(
     form.Textbox('net_code', form.notnull, description="Net Code"),
     form.Password('password', description="Password", post="<span> Optional</span>"),
     form.Textbox('captcha', form.notnull, description="Validation Code", pre="<img src='/captcha.gif' valign=center><br>", style="width:70px;"),
+    form.Hidden('timezone', form.notnull, value="America/New_York"),
     form.Button('Create Game'),
     validators = [
         form.Validator("Invalid net code", lambda i: len(i.net_code) == 8 ),   # Check to make sure the netcode is legit
