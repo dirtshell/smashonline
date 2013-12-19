@@ -8,7 +8,6 @@ If you cloned this, you are going to need a sqlite database, as well as PIL. To 
 * Prettify everything
 * Autofill the first page of matches with matches in the users region
 * Have a page that shows the ELO board
-* Detect region based on IP and display it
 * Implement AJAX so people can view games in other regions
 
 ### Maybes
