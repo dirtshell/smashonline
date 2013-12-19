@@ -1,6 +1,13 @@
 $def with (matches)
 <head>
     <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
+    <script type="text/javascript" src='http://cdn.bitbucket.org/pellepim/jstimezonedetect/downloads/jstz-1.0.4.min.js'></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script type="text/javascript">
+    $$(document).ready(function () {
+        var tz = jstz.determine();
+    });
+    </script>
 </head>
 
 <h1> Welcome to the homepage of SmashOnline (Tentative Title)</h1>
@@ -19,6 +26,6 @@ $def with (matches)
                 <td>Password Protected</td>
             $else:
                 <td>$match.net_code</td>
-            <td>$match.ip</td>
+            <td>$match.timezone</td>
         </tr>
 </table>
